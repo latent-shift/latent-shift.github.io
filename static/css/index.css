@@ -180,7 +180,7 @@ table {}
 
 th,
 td {
-    padding: 5px;
+    padding: 0px;
     /* background-color: lightsteelblue; */
 }
 
@@ -189,11 +189,6 @@ td {
     transition: transform .2s;
     margin: 0 auto;
 }
-
-.center:hover {
-    transform: scale(1.2);
-}
-
 
 #interpolation-image-wrapper {
   width: 100%;
@@ -206,3 +201,8 @@ img {
     height: 256;
     object-fit: cover;
 }
+
+.center:hover {
+    transform: scale(1.2);
+}
+
