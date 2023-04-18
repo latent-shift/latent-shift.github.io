@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Carousel Demo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .carousel {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-img {
+      width: 100%;
+      height: 400px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .carousel-img.active {
+      opacity: 1;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 30px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      z-index: 2;
+    }
+
+    .carousel-btn.prev {
+      left: 0;
+    }
+
+    .carousel-btn.next {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel">
+    <div class="carousel-img active">
+    <img style="width: 256px; height: 256px;" src="assets/visual/6052_birds_fly_in_the_sky.webp">
+    <p>Image 1</p>    
+    </div>
+    <div class="carousel-img active">
+    <img style="width: 256px; height: 256px;" src="assets/visual/2664_a_cartoon_about_a_cat.webp">
+    <p>Image 2</p>    
+    </div>
+    <button class="carousel-btn prev">&#10094;</button>
+    <button class="carousel-btn next">&#10095;</button>
+  </div>
+  <script>
+    var currentSlide = 0;
+    var slides = document.getElementsByClassName("carousel-img");
+
+    function showSlide(n) {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }
+
+    document.querySelector(".next").addEventListener("click", function() {
+      showSlide(currentSlide + 1);
+    });
+
+    document.querySelector(".prev").addEventListener("click", function() {
+      showSlide(currentSlide - 1);
+    });
+
+    setInterval(function() {
+      showSlide(currentSlide + 1);
+    }, 5000);
+  </script>
+</body>
+</html>
